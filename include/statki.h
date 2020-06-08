@@ -120,7 +120,7 @@ public:
         }
     }
     
-    void dodaj(statek *perla);//statek  int x, int y, char k, int typ
+    bool dodaj(statek *perla);//statek  int x, int y, char k, int typ
     /*
     level(){
         //cout<<"Hello\n";//DEBUG
@@ -135,3 +135,21 @@ public:
     bool strzal(int x, int y);
     
 };
+
+
+class player{
+public:
+    virtual vector2 strzal()=0;
+};
+
+class human: public player{
+public:
+    vector2 strzal();
+};
+
+class bot: public player{
+public:
+    vector2 strzal();
+};
+
+void dawaj_texture(level *lvl, string path, int x, int y);

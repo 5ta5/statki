@@ -32,7 +32,7 @@ void level::render(){
 }
 
 
-void level::dodaj(statek *perla){//int x, int y, char k, 
+bool level::dodaj(statek *perla){//int x, int y, char k, 
     
     //statek *perla;
     /*
@@ -47,13 +47,31 @@ void level::dodaj(statek *perla){//int x, int y, char k,
     perla->kierunek=k;
     */
     //cout<<"x: "<<perla->x<<"   y: "<<perla->y<<"\n";
+    for(int i=0;i<perla->rozmiar();i++){
+        int xx=(perla->x)+(perla->kierunek.x*i);
+        int yy=(perla->y)+(perla->kierunek.y*i);
+        
+        
+        //cout<<"x: "<<perla->x<<"    y: "<<perla->y<<"   k[x]: "<<perla->kierunek.x<<"   k[y]: "<<perla->kierunek.y<<"\n";
+        //cout<<"xx: "<<xx<<"    yy: "<<yy<<"\n";
+        if(xx<0 || xx>=10){
+            return(false);
+        }
+        if(yy<0 || yy>=10){
+            return(false);
+        }
+        if(matrix[xx][yy]->thype()!="empty"){
+            return(false);
+        }
+    }
+    
     statki.push_back(perla);
     for(int i=0;i<perla->rozmiar();i++){
         int xx=(perla->x)+(perla->kierunek.x*i);
         int yy=(perla->y)+(perla->kierunek.y*i);
         matrix[xx][yy]=perla;
     }
-    
+    return(true);
 }
 
 bool level::strzal(int x, int y){

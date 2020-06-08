@@ -1,8 +1,5 @@
 #include "../include/statki.h"
 
-
-
-
 void obj::render(level *lvl/*, float alpha, float angle*/){
     //cout<<"Fajny Jestem!\n";//DEBUG
     sf::Sprite sprite;
@@ -25,6 +22,9 @@ void obj::render(level *lvl/*, float alpha, float angle*/){
         angle=3;
     }
     transform.rotate(angle*90, (x+0.5)*scale, (y+0.5)*scale);
+    
+    
+    dawaj_texture(lvl, tex_p+"eee.png", (x+0.5)*scale, (y+0.5)*scale);
     
     sprite.setPosition(sf::Vector2f(scale*y, scale*x));//+lvl.offset
     //cout<<"scale: "<<scale<<"    x: "<<scale*x<<"    y: "<<scale*y;//DEBUG
