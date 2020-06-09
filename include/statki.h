@@ -1,4 +1,4 @@
-//#pragma once
+#pragma once
 #include "libs.h"
 
 class obj;
@@ -15,6 +15,10 @@ public:
         y=iny;
     }
 };
+
+//inline bool operator==(const vector2 & lhs, const vector2 & rhs){ return !(lhs == rhs); }
+bool operator==(const vector2 & a, const vector2 & b);
+
 
 //VIRTUAL--------------------------------------------------------
 class obj{
@@ -40,6 +44,8 @@ public:
     };
     
 };
+
+ostream & operator <<( ostream & s, const obj & o );
 
 class trafienie: public obj{
 public:
@@ -132,23 +138,6 @@ public:
 
 
 
-
-
-/*
-//REAL-----------------------------------------
-class empty_space: public obj{
-public:
-    string thype(){return(" ");};
-    string texture_path(){return(tex_p+"black.png");};
-    void self_draw(level *lvl, int x, int y);
-};
-class kuter: public rigid{
-public:
-    string thype(){return(" ");};
-    string texture_path(){return(tex_p+"black.png");};
-    void self_draw(level *lvl, int x, int y);
-};
-*/
 
 class level{
 public:

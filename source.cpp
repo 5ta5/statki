@@ -55,66 +55,16 @@ int main(){
     //window->setVerticalSyncEnabled(true);
     level lvl_gracz(&window);//nom
     level lvl_bot(&window);
-    /*
-    obj tmp;
-    lvl.statki.push_back(&tmp);
-    */
-    //for...
     
-    /*
-    kuter czarna;//konkretny
-    czarna.x=5;
-    czarna.y=5;
-    czarna.kierunek=vector2(-1, 0);
-    lvl_bot.dodaj(&czarna);//0, 0, 'D', 
-    */
-    
-    /*
-    lvl_bot.dodaj(new kuter(5, 5, vector2(0, 1)));
-    lvl_bot.dodaj(new kuter(6, 5, vector2(0, 1)));
-    lvl_bot.dodaj(new kuter(7, 5, vector2(0, 1)));
-    */
-    
+    if(vector2(2, 2)==vector2(2, 2)){//przyklad uzycia operatora ==
+        cout<<"ruwne\n";
+    }
     
     human jack;//sparrow
     bot barrbarossa;
     
     level *poziom;
     player *gracz;
-    
-    /*
-    ponton pontony[100];
-    kuter kutry[100];
-    korweta korwety[100];
-    
-    for(int i=0;i<1;i++){
-        if(i%2==0){
-            poziom=&lvl_bot;
-            //cout<<"ee\n";//DEBGUG
-        }else{
-            poziom=&lvl_gracz;
-        }
-        for(int i=1;i<4;i++){
-            
-            korwety[i].x=5+i;
-            korwety[i].y=5;
-            korwety[i].kierunek=vector2(0, 1);
-            
-            poziom->dodaj(&korwety[i]);
-            
-        }
-    }
-    
-    */
-    /*
-    ponton pontona;
-    kuter kutra;
-    korweta korweta;
-    
-    ponton pontonb;
-    kuter kutrb;
-    korweta korwetb;
-    */
     
     
     vector2 strzal;
@@ -155,6 +105,11 @@ int main(){
     for(int j=0;j<60 && window.isOpen();j++){
         quit_check(poziom);
         poziom->render(false);
+    }
+    
+    
+    for(int i=0;i<poziom->statki.size();i++){//tu uzywam operatora wow omg
+        cout<<*(poziom->statki[i])<<"\n";
     }
     
     //cout<<"trafienia"<<poziom->trafienia<<"\n";//DEBUG
@@ -199,15 +154,6 @@ int main(){
             
         }
         
-        //cout<<"EEE\n";
-        /*
-        for(int i=0;i<10;i++){
-            for(int j=0;j<10;j++){
-                lvl.strzal(i, j);
-            }
-        }
-        */
-        //lvl.strzal(3, 5);
     }
     
 }

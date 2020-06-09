@@ -69,3 +69,16 @@ string trafienie::texture_path(){
 string water::texture_path(){
     return(tex_p+"nie ma wody dla ciebie!");
 }
+
+ostream & operator <<( ostream & s, const obj & o )
+{
+    return s<<"[ X: "<<o.x<<",   Y: "<< o.y<<"]";
+}
+
+
+bool operator==(const vector2 & a, const vector2 & b){
+    if(a.x==b.x && a.y==b.y){
+        return(true);
+    }
+    return(false);
+}
