@@ -158,6 +158,7 @@ public:
     
     trafienie traf[108];
     int l_traf=0;
+    int trafienia=0;
     
     obj *matrix[12][12];
     

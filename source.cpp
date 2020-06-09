@@ -124,9 +124,7 @@ int main(){
             poziom=&lvl_bot;
             //cout<<"ee\n";//DEBGUG
             for(int i=0;i<1;i++){
-                while((poziom->dodaj(new ponton(random()%10, random()%10, ra())))==false){
-                    cout<<"Twoja Stara\n";//DEBUG
-                };
+                while((poziom->dodaj(new ponton(random()%10, random()%10, ra())))==false){};
                 while((poziom->dodaj(new kuter(random()%10, random()%10, ra())))==false){};
                 while((poziom->dodaj(new korweta(random()%10, random()%10, ra())))==false){};
             }
@@ -159,9 +157,9 @@ int main(){
         poziom->render(false);
     }
     
-    //cout<<"l_traf"<<poziom->l_traf<<"\n";//DEBUG
-    while(window.isOpen() && poziom->l_traf<=6){
-        for(int i=0;i>=0 && window.isOpen() && poziom->l_traf<6;i++){
+    //cout<<"trafienia"<<poziom->trafienia<<"\n";//DEBUG
+    while(window.isOpen() && poziom->trafienia<6){
+        for(int i=0;i>=0 && window.isOpen() && poziom->trafienia<6;i++){
             if(i%2==0){
                 poziom=&lvl_bot;
                 gracz=&jack;

@@ -94,6 +94,7 @@ bool level::strzal(int x, int y){
         matrix[x][y]=&traf[l_traf];
         statki.push_back(&traf[l_traf]);
         l_traf++;
+        trafienia++;
         return(true);
     }else{
         if(matrix[x][y]->thype()=="empty"){
