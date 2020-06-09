@@ -22,13 +22,23 @@ public:
     int x;
     int y;
     vector2 kierunek;
+    int hp;
     //virtual string thype()=0;
     //virtual string texture_path()=0;
    
     //void draw(level *lvl, int x, int y, string tp, float alpha=1, float angle=0);
     virtual string texture_path()=0;
-    void render(level *lvl/*, string tp, float alpha, float angle*/);
+    void render(level *lvl/*, string tp, float alpha, float angle*/, bool visible);
     virtual string thype()=0;
+    
+    obj(){};
+    
+    obj(int inx, int iny, vector2 k){
+        x=inx;
+        y=iny;
+        kierunek=k;
+    };
+    
 };
 
 class trafienie: public obj{
@@ -51,11 +61,22 @@ static inline const string tex_p="../textures/";
 
 class statek: public obj{
 public:
-    bool trafienia[10];//to se zrob XD
+    //bool trafienia[10];//to se zrob XD
     //virtual vector2 rozmiar()=0;
     virtual string texture_path()=0;
     virtual int rozmiar();
     string thype(){return("statek");}
+    
+    /*
+    public void dmg(int inx, int iny){
+        int dyst=
+        trafienia[dyst]=true;
+    }
+    public void dmg(){
+        
+    }
+    */
+    
 };
 
 
@@ -63,6 +84,16 @@ class ponton: public statek{
 public:
     string texture_path();
     int rozmiar(){return(1);};
+    
+    ponton(){
+        hp=1;
+    };
+    ponton(int inx, int iny, vector2 k){
+        hp=1;
+        x=inx;
+        y=iny;
+        kierunek=k;
+    };
 };
 
 
@@ -70,6 +101,16 @@ class kuter: public statek{
 public:
     string texture_path();
     int rozmiar(){return(2);};
+    
+    kuter(){
+        hp=2;
+    };
+    kuter(int inx, int iny, vector2 k){
+        hp=2;
+        x=inx;
+        y=iny;
+        kierunek=k;
+    };
 };
 
 
@@ -77,6 +118,16 @@ class korweta: public statek{
 public:
     string texture_path();
     int rozmiar(){return(3);};
+    
+    korweta(){
+        hp=3;
+    };
+    korweta(int inx, int iny, vector2 k){
+        hp=3;
+        x=inx;
+        y=iny;
+        kierunek=k;
+    };
 };
 
 
@@ -103,7 +154,7 @@ class level{
 public:
     water woda;
     vector<obj*> statki;//obiekty
-    void render();
+    void render(bool visible);
     
     trafienie traf[108];
     int l_traf=0;
@@ -144,6 +195,7 @@ public:
 
 class human: public player{
 public:
+    bool lmousedown=false;
     vector2 strzal();
 };
 

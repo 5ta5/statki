@@ -14,7 +14,7 @@ void dawaj_texture(level *lvl, string path, int x=0, int y=0){
 }
 
 
-void level::render(){
+void level::render(bool visible=false){
     window->clear();
     
     dawaj_texture(this, tex_p+"moze.png");
@@ -23,7 +23,7 @@ void level::render(){
     int istart=0;
     //if
     for(int i=istart;i<statki.size();i++){
-        statki[i]->render(this);
+        statki[i]->render(this, visible);
     }
     //if(win){win}
     //print_lvl_info();
@@ -87,6 +87,10 @@ bool level::strzal(int x, int y){
         traf[l_traf].stan=true;
         traf[l_traf].x=x;
         traf[l_traf].y=y;
+        
+        matrix[x][y]->hp--;
+        //cout<<"matrix[hp]: "<<matrix[x][y]->hp<<"\n";//DEBGU
+        
         matrix[x][y]=&traf[l_traf];
         statki.push_back(&traf[l_traf]);
         l_traf++;

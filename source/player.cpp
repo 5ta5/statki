@@ -12,7 +12,15 @@ vector2 human::strzal(){
     odp.y=sf::Mouse::getPosition().x/100;
     odp.y=odp.y%10;
     
-    if(sf::Mouse::isButtonPressed(sf::Mouse::Left)==false){
+    if(sf::Mouse::isButtonPressed(sf::Mouse::Left)==true){
+        if(lmousedown==false){
+            lmousedown=true;//click
+        }else{
+            odp.x=-1;
+            odp.y=-1;
+        }
+    }else{
+        lmousedown=false;
         odp.x=-1;
         odp.y=-1;
     }

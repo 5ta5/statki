@@ -11,13 +11,25 @@ string statek::texture_path(){
 
 
 string ponton::texture_path(){
-    return(tex_p+"ponton.png");
+    string my_p="";
+    if(hp==0){
+        my_p="wrak_";
+    }
+    return(tex_p+my_p+"ponton.png");
 }
 
 string kuter::texture_path(){
-    return(tex_p+"kuter.png");
+    string my_p="";
+    if(hp==0){
+        my_p="wrak_";
+    }
+    return(tex_p+my_p+"kuter.png");
 }
 
 string korweta::texture_path(){
-    return(tex_p+"korweta.png");
+    string my_p="";
+    if(hp==0){
+        my_p="wrak_";
+    }
+    return(tex_p+my_p+"korweta.png");
 }
