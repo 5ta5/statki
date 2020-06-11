@@ -19,6 +19,9 @@ void level::render(bool visible=false){
     
     dawaj_texture(this, tex_p+"moze.png");
     
+    if(hover->thype()=="statek"){
+        hover->render(this, true);
+    }
     
     int istart=0;
     //if

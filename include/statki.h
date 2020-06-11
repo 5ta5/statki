@@ -145,6 +145,9 @@ public:
     vector<obj*> statki;//obiekty
     void render(bool visible);
     
+    obj *hover;
+    //void rehover();
+    
     trafienie traf[108];
     int l_traf=0;
     int trafienia=0;
@@ -154,6 +157,7 @@ public:
     sf::RenderWindow *window;
     level(sf::RenderWindow *wd){
         window=wd;
+        hover=&woda;
         for(int i=0;i<10;i++){
             for(int j=0;j<10;j++){
                 matrix[i][j]=&woda;
@@ -195,3 +199,5 @@ public:
 };
 
 void dawaj_texture(level *lvl, string path, int x, int y);
+
+void send_to_mouse_position(obj *o);

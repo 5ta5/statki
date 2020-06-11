@@ -49,6 +49,20 @@ int main(){
     
     srand(time(NULL));
     
+    
+    
+    //muzyka - pierwsza strona z google
+    sf::SoundBuffer buffer;
+    if(!buffer.loadFromFile("../sound/track.wav"))
+        return -1;
+    
+    sf::Sound sound;
+    sound.setBuffer(buffer);
+    sound.play();
+    //muzyka
+    
+    
+    
     sf::VideoMode desktop = sf::VideoMode().getDesktopMode();
     sf::RenderWindow window(desktop, "SOKOBAN", sf::Style::Fullscreen);//sf::VideoMode(1000, 1000)
     window.setFramerateLimit(60);
@@ -81,19 +95,36 @@ int main(){
         }else{
             poziom=&lvl_gracz;
             gracz=&jack;
-            for(int i=0;i<10;i++){
+            for(int i=0;i<3;i++){
+                //kuter nowy(strzal.x, strzal.y, ra());
+                statek *nowy;
+                if(i%3==0){
+                    nowy=new ponton(strzal.x, strzal.y, vector2(1, 0)/*ra()*/);
+                }
+                if(i%3==1){
+                    nowy=new kuter(strzal.x, strzal.y, vector2(1, 0)/*ra()*/);
+                }
+                if(i%3==2){
+                    nowy=new korweta(strzal.x, strzal.y, vector2(1, 0)/*ra()*/);
+                }
+                
                 do{//nie strzela
                     strzal=gracz->strzal();
                     quit_check(poziom);
                     poziom->render(true);
+                    poziom->hover=nowy;
+                    send_to_mouse_position(nowy);
                     if(strzal.x!=-1){
                         //strzelamy
                         //cout<<"EEE\n";//DEBGU
-                        poziom->dodaj(new kuter(strzal.x, strzal.y, ra()));
+                        //poziom->dodaj(new kuter(strzal.x, strzal.y, ra()));
+                        
+                        poziom->dodaj(nowy);
                     }
                 }while(window.isOpen() && strzal.x==-1);//strzal.x!=-1
             }
         }
+        poziom->hover=&(poziom->woda);
         /*
         for(int i=1;i<6;i++){
             poziom->dodaj(new ponton(random()%10, random()%10, ra()));
