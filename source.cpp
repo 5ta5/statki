@@ -64,7 +64,8 @@ int main(){
     
     
     sf::VideoMode desktop = sf::VideoMode().getDesktopMode();
-    sf::RenderWindow window(desktop, "SOKOBAN", sf::Style::Fullscreen);//sf::VideoMode(1000, 1000)
+    //sf::RenderWindow window(desktop, "SOKOBAN", sf::Style::Fullscreen);//sf::VideoMode(1000, 1000)
+    sf::RenderWindow window(sf::VideoMode(1000, 1000), "SOKOBAN");//
     window.setFramerateLimit(60);
     //window->setVerticalSyncEnabled(true);
     level lvl_gracz(&window);//nom

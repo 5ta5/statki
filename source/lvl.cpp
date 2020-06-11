@@ -17,7 +17,11 @@ void dawaj_texture(level *lvl, string path, int x=0, int y=0){
 void level::render(bool visible=false){
     window->clear();
     
-    dawaj_texture(this, tex_p+"moze.png");
+    if(visible==true){
+        dawaj_texture(this, tex_p+"moze.png");
+    }else{
+        dawaj_texture(this, tex_p+"radar.png");
+    }
     
     if(hover->thype()=="statek"){
         hover->render(this, true);
