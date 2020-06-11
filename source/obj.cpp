@@ -1,7 +1,7 @@
 #include "../include/statki.h"
 
 void obj::render(level *lvl/*, float alpha, float angle*/, bool visible=false){
-    visible=true;//tmp
+    //visible=true;//tmp
     if(!(visible==false && this->thype()=="statek" && hp>0)){
         if(this->thype()=="statek"){
             //cout<<"HP: "<<hp<<"\n";//DEBUG
